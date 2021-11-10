@@ -11,7 +11,6 @@ useEffect(()=> {
     axiosWithAuth()
     .get('/friends')
     .then(res => {
-        console.log(res)
         setFriends(res.data)
     })
     .catch(err => console.log(err))
