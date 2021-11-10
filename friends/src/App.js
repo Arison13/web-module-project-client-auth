@@ -3,6 +3,9 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import axios from 'axios';
 import Login from './components/Login';
+import Logout from './components/Logout';
+import PrivateRoute from './components/PrivateRoute';
+import FriendsList from './components/FriendsList';
 
 function App() {
 
@@ -16,10 +19,15 @@ function App() {
           <li>
             <Link to="/logout">Logout</Link>
           </li>
+          <li>
+            <Link to="/friends-list">Friends</Link>
+          </li>
         </ul>
         <Switch>
           <Route path="/login" component={Login} />
-          <Route path="/" component={Login} />    
+          <Route exact path="/" component={Login} />    
+          <Route path="/logout" component={Logout} /> 
+          <PrivateRoute path="/friends-list" component={FriendsList}/> 
         </Switch>
       </div>
     </Router>

@@ -1,13 +1,17 @@
 import React, {useState} from "react";
 import axios from "axios";
+import { useHistory } from "react-router";
 
 const Login = ()=> {
+    const {push} = useHistory();
+
     const [state, setState]=useState({
       credentials: {
         username: '',
         password:''
       }
     })
+
   
     const handleChange = e => {
       setState({
@@ -24,6 +28,7 @@ const Login = ()=> {
       .then( res => {
         console.log(res)
         localStorage.setItem('token', res.data.payload);
+        push("/friends-list")
       })
       .catch(err => {
         console.log(err)
